@@ -1,0 +1,266 @@
+:root {
+  --bg: #0f1220;
+  --bg-alt: #171b2e;
+  --card: #1c2137;
+  --accent: #6ee7b7;
+  --accent-dark: #10b981;
+  --danger: #f87171;
+  --text: #e8e9f3;
+  --text-dim: #9298b5;
+  --border: #2b3153;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, var(--bg-alt), var(--bg));
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+.app {
+  width: 100%;
+  max-width: 560px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 2.2rem;
+}
+
+.subtitle {
+  color: var(--text-dim);
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.stat {
+  flex: 1;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 14px;
+  text-align: center;
+}
+
+.stat .label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat .value {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+#timer.low {
+  color: var(--danger);
+}
+
+.timerbar-track {
+  height: 6px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.timerbar-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--accent-dark), var(--accent));
+  transition: width 0.2s linear, background 0.3s;
+}
+
+.timerbar-fill.low {
+  background: var(--danger);
+}
+
+main {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.chain-display {
+  min-height: 36px;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.chain-display .placeholder {
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+.chain-display .word {
+  display: inline-block;
+  background: rgba(110, 231, 183, 0.12);
+  border: 1px solid rgba(110, 231, 183, 0.3);
+  border-radius: 8px;
+  padding: 2px 10px;
+  margin: 2px 4px 2px 0;
+}
+
+.chain-display .arrow {
+  color: var(--text-dim);
+  margin-right: 4px;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.required-letter {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--accent);
+  min-width: 32px;
+  text-align: center;
+}
+
+#wordInput {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1.05rem;
+}
+
+#wordInput:focus {
+  outline: 2px solid var(--accent-dark);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  background: var(--accent-dark);
+  color: #06251b;
+  transition: transform 0.1s, background 0.2s;
+}
+
+button:hover {
+  background: var(--accent);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+.feedback {
+  min-height: 22px;
+  margin: 10px 0 0;
+  font-size: 0.9rem;
+}
+
+.feedback.error {
+  color: var(--danger);
+}
+
+.feedback.ok {
+  color: var(--accent);
+}
+
+.chain-history {
+  margin-top: 20px;
+}
+
+.chain-history h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+  margin: 0 0 8px;
+}
+
+#historyList {
+  list-style: decimal;
+  padding-left: 20px;
+  margin: 0;
+  max-height: 180px;
+  overflow-y: auto;
+  color: var(--text-dim);
+}
+
+#historyList li {
+  padding: 2px 0;
+}
+
+#historyList li:last-child {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.gameover-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 6, 15, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+
+.gameover-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.gameover-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  max-width: 340px;
+}
+
+.gameover-card h2 {
+  margin-top: 0;
+}
+
+.new-highscore {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.hidden {
+  display: none;
+}

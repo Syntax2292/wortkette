@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wortkette</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>🔗 Wortkette</h1>
+      <p class="subtitle">Bilde eine Kette aus Wörtern — jedes neue Wort beginnt mit dem letzten Buchstaben des vorigen. Kein Wort doppelt, und die Uhr tickt!</p>
+    </header>
+
+    <section class="stats">
+      <div class="stat">
+        <span class="label">Punkte</span>
+        <span class="value" id="score">0</span>
+      </div>
+      <div class="stat">
+        <span class="label">Bestwert</span>
+        <span class="value" id="highscore">0</span>
+      </div>
+      <div class="stat">
+        <span class="label">Zeit</span>
+        <span class="value" id="timer">10</span>
+      </div>
+    </section>
+
+    <div class="timerbar-track">
+      <div class="timerbar-fill" id="timerbar"></div>
+    </div>
+
+    <main>
+      <div class="chain-display" id="chainDisplay">
+        <span class="placeholder">Gib ein Startwort ein, um zu beginnen…</span>
+      </div>
+
+      <form id="wordForm" autocomplete="off">
+        <div class="input-row">
+          <span class="required-letter" id="requiredLetter"></span>
+          <input type="text" id="wordInput" placeholder="Dein Wort…" autocomplete="off" spellcheck="false">
+          <button type="submit">Los</button>
+        </div>
+      </form>
+
+      <p class="feedback" id="feedback"></p>
+    </main>
+
+    <div class="chain-history">
+      <h2>Kette</h2>
+      <ol id="historyList"></ol>
+    </div>
+
+    <div class="gameover-overlay" id="gameOverOverlay">
+      <div class="gameover-card">
+        <h2>Zeit abgelaufen!</h2>
+        <p>Deine Kette hatte <strong id="finalScore">0</strong> Wörter.</p>
+        <p id="newHighscoreMsg" class="new-highscore hidden">🎉 Neuer Bestwert!</p>
+        <button id="restartBtn">Nochmal spielen</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
